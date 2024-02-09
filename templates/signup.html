@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if display_name %}
+	<h1>Hello {{ display_name }}!</h1>
+{% else %}
+	<h1>form</h1>
+	<form method="POST">
+		{{ form.hidden_tag() }}
+		
+		{{ form.username.label }}
+		{{ form.username }}
+
+		{{ form.email.label }}
+		{{ form.email }}
+
+		{{ form.display_name.label }}
+		{{ form.display_name }}
+
+		{{ form.submit }}
+
+	</form>
+
+{% endif %}
+
+
+{% endblock %}
