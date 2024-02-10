@@ -1,7 +1,7 @@
 :root {
-	--bg_color: #0f0f0f;
+	--bg_color: #dcdcdc;
 	--text_color: #000000;
-	--nav_bg_color: #2b251f;
+	--nav_bg_color: #2c3d74;
 	--nav_txt_color: #d7d7d7;
 }
 
@@ -9,7 +9,7 @@ body {
 	background-color: var(--bg_color);
 	min-height: 100vh;
 	max-width: 100vw;
-
+	padding-top: 3em;
 }
 
 /* Reset default styles */
@@ -75,7 +75,13 @@ nav a {
 	.icons {
 		display: block;
 	}
-	nav a {
+	nav a:not(.title) {
 		display: none;
+	}
+}
+
+@media (max-width: 560px) {
+	.title {
+		font-size: 1.2rem;
 	}
 }
