@@ -1,3 +1,81 @@
+:root {
+	--bg_color: #0f0f0f;
+	--text_color: #000000;
+	--nav_bg_color: #2b251f;
+	--nav_txt_color: #d7d7d7;
+}
+
 body {
-	background-color: #e0e0e0;
+	background-color: var(--bg_color);
+	min-height: 100vh;
+	max-width: 100vw;
+
+}
+
+/* Reset default styles */
+* {
+    margin:  0;
+    padding:  0;
+    box-sizing: border-box;
+	font-family: 'Poppins', sans-serif;
+}
+
+
+/* -------------------------------------------------- */
+/* ------------------ N A V B A R ------------------- */
+/* -------------------------------------------------- */
+
+nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 1.3rem 10%;
+	background-color: var(--nav_bg_color);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+nav .title {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 2rem;
+	color: #ffffff;
+	letter-spacing: -1px;
+	animation: TitleAnim 6s cubic-bezier(.43,.03,.5,1.09);
+	color: var(--nav_txt_color);
+}
+
+@keyframes TitleAnim {
+	from {
+		letter-spacing: 5px;
+	}
+	to {
+		letter-spacing: -1px;
+	}
+}
+
+nav a {
+	font-size: 1.15rem;
+	color: #fff;
+	text-decoration: none;
+	margin-left: 1.25rem;
+	margin-right: 1.25rem;
+	color: var(--nav_txt_color);
+}
+
+.icons {
+	font-size: 2.8rem;
+	color: var(--nav_txt_color);
+	cursor: pointer;
+	display: none;
+}
+
+@media (max-width: 992px) {
+	.icons {
+		display: block;
+	}
+	nav a {
+		display: none;
+	}
 }
