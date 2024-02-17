@@ -1,15 +1,15 @@
 :root {
 	--bg_color: #dcdcdc;
 	--text_color: #000000;
-	--nav_bg_color: #2c3d74;
-	--nav_txt_color: #d7d7d7;
+	--nav_bg_color: #c7c7c7;
+	--nav_txt_color: #1d1d1d;
 }
 
 body {
 	background-color: var(--bg_color);
 	min-height: 100vh;
 	max-width: 100vw;
-	padding-top: 3em;
+	padding-top: 5em;
 }
 
 /* Reset default styles */
@@ -40,7 +40,6 @@ nav {
 nav .title {
 	font-family: 'Montserrat', sans-serif;
 	font-size: 2rem;
-	color: #ffffff;
 	letter-spacing: -1px;
 	animation: TitleAnim 6s cubic-bezier(.43,.03,.5,1.09);
 	color: var(--nav_txt_color);
@@ -57,7 +56,6 @@ nav .title {
 
 nav a {
 	font-size: 1.15rem;
-	color: #fff;
 	text-decoration: none;
 	margin-left: 1.25rem;
 	margin-right: 1.25rem;

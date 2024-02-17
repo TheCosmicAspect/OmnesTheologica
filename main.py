@@ -14,6 +14,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 # init db
 db = SQLAlchemy(app)
 
+app.app_context().push() 
+
 # ------------------ #
 # ----- Routes ----- #
 # ------------------ #
@@ -36,17 +38,30 @@ def denomination(denom):
 # Signup
 @app.route('/signup', methods=['GET', 'POST'])
 def signup():
-	display_name = None
 	form = UserForm()
 
 	# Validate Form
 	if form.validate_on_submit():
-		display_name = form.display_name.data
+		user = UsersDB.query.filter_by(email=form.email.data).first()
+		if user is None:
+			user = UsersDB(
+				display_name = form.display_name.data,
+				email = form.email.data
+				)
+			
+			# finalize changes
+			db.session.add(user)
+			db.session.commit()
+
+		# clear form
 		form.display_name.data = ''
+		form.email.data = ''
+	our_users = UsersDB.query.order_by(UsersDB.date_added)
+
 
 	return render_template('signup.html',
-		display_name = display_name,
-		form = form
+		form = form,
+		our_users = our_users
 		)
 
 # ------------------- #
@@ -72,9 +87,9 @@ class UserForm(FlaskForm):
 # DB Model
 class UsersDB(db.Model):
 	id = db.Column(db.Integer, primary_key = True)
-	display_name = db.Column(db.String(30))
+	display_name = db.Column(db.String(25))
 	email = db.Column(db.String(100), nullable = False, unique = True)
-	username = db.Column(db.String, nullable = False, unique = True)
+	username = db.Column(db.String(50), unique = True)
 	date_added = db.Column(db.DateTime, default = datetime.utcnow)
 
 	# I think this is important
